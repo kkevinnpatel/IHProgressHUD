@@ -265,7 +265,13 @@ public class IHProgressHUD : UIView {
         
         if tag == 101 {
             print("tap")
-            NotificationCenter.default.post(name: NotificationName.IHProgressHUDCancelEvent.getNotificationName(), object: self, userInfo: notificationUserInfo())
+            
+            NotificationCenter.default.post(name: NotificationName.IHProgressHUDWillAppear.getNotificationName(), object: self, userInfo: notificationUserInfo())
+
+            NotificationCenter.default.post(name: Notification.Name("CancelEvent"), object: self, userInfo: notificationUserInfo())
+
+            
+            //NotificationCenter.default.post(name: NotificationName.IHProgressHUDCancelEvent.getNotificationName(), object: self, userInfo: notificationUserInfo())
         }
     }
 

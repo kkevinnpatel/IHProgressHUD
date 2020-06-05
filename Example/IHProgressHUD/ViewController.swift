@@ -45,7 +45,7 @@ class ViewController : UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handle(_:)), name: NotificationName.IHProgressHUDDidAppear.getNotificationName(), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handle(_:)), name: NotificationName.IHProgressHUDDidReceiveTouchEvent.getNotificationName(), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handle(_:)), name: NotificationName.IHProgressHUDDidTouchDownInside.getNotificationName(), object: nil)
         
         addObserver(self as NSObject, forKeyPath: "activityCount", options: .new, context: nil)
 
@@ -149,7 +149,7 @@ class ViewController : UIViewController {
         if notification?.name.rawValue == "IHProgressHUDCancelEvent" {
             closeProgress()
         }
-        if ((notification?.name)!.rawValue == "IHProgressHUDDidReceiveTouchEvent") {
+        if ((notification?.name)!.rawValue == "IHProgressHUDDidTouchDownInside") {
             closeProgress()
         }
     }
