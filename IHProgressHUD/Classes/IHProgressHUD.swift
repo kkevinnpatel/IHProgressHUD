@@ -12,7 +12,7 @@
 import UIKit
 
 public enum NotificationName : String {
-    case IHProgressHUDDidReceiveTouchEvent, IHProgressHUDDidTouchDownInside, IHProgressHUDWillDisappear, IHProgressHUDDidDisappear, IHProgressHUDWillAppear, IHProgressHUDDidAppear, IHProgressHUDStatusUserInfoKey
+    case IHProgressHUDDidReceiveTouchEvent, IHProgressHUDDidTouchDownInside, IHProgressHUDWillDisappear, IHProgressHUDDidDisappear, IHProgressHUDWillAppear, IHProgressHUDDidAppear, IHProgressHUDStatusUserInfoKey,IHProgressHUDCancelEvent
     public func getNotificationName() -> Notification.Name {
         return Notification.Name.init(self.rawValue)
     }
@@ -107,7 +107,7 @@ public class IHProgressHUD : UIView {
         infoImage = loadImageBundle(named: "info")!
         successImage = loadImageBundle(named: "success")!
         errorImage = loadImageBundle(named: "error")
-        isUserInteractionEnabled = false
+        //isUserInteractionEnabled = false
         activityCount = 0
         getBackGroundView().alpha = 0.0
         getImageView().alpha = 0.0
@@ -199,7 +199,7 @@ public class IHProgressHUD : UIView {
             strongSelf.getStatusLabel().isHidden = (status?.count ?? 0) == 0
             strongSelf.getStatusLabel().text = status
             strongSelf.progress = progress
-            
+
             // Choose the "right" indicator depending on the progress
             if progress >= 0 {
                 // Cancel the indefiniteAnimatedView, then show the ringLayer
@@ -259,6 +259,17 @@ public class IHProgressHUD : UIView {
         })
     }
     
+    @objc func tap(_ gestureRecognizer: UITapGestureRecognizer) {
+        
+        let tag = gestureRecognizer.view?.tag
+        
+        if tag == 101 {
+            print("tap")
+            NotificationCenter.default.post(name: NotificationName.IHProgressHUDCancelEvent.getNotificationName(), object: self, userInfo: notificationUserInfo())
+        }
+    }
+
+
     @objc private func controlViewDidReceiveTouchEvent(_ sender: Any?, for event: UIEvent?) {
         NotificationCenter.default.post(name: NotificationName.IHProgressHUDDidReceiveTouchEvent.getNotificationName(), object: self, userInfo: notificationUserInfo())
         
@@ -288,7 +299,7 @@ public class IHProgressHUD : UIView {
             isAccessibilityElement = true
             getControlView().accessibilityViewIsModal = true
         } else {
-            getControlView().isUserInteractionEnabled = false
+            //getControlView().isUserInteractionEnabled = false
             getHudView().accessibilityLabel = getStatusLabel().text ?? "Loading"
             getHudView().isAccessibilityElement = true
             getControlView().accessibilityViewIsModal = false
@@ -535,7 +546,6 @@ public class IHProgressHUD : UIView {
                 strongSelf.getImageView().image = image
             }
             strongSelf.getImageView().isHidden = false
-            
             strongSelf.getStatusLabel().isHidden = status == nil || status?.count == 0
             if let stts = status {
                 strongSelf.getStatusLabel().text = stts
@@ -835,9 +845,14 @@ public class IHProgressHUD : UIView {
         statusLabel?.font = font
         statusLabel?.alpha = 1.0
         statusLabel?.isHidden = false
+        
+        statusLabel?.isUserInteractionEnabled = true
+        statusLabel?.tag = 101
+        statusLabel?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tap(_:))))
+
         return statusLabel!
     }
-    
+
     private func fadeInEffects() {
         if defaultStyle != .custom {
             var blurStyle = UIBlurEffect.Style.light

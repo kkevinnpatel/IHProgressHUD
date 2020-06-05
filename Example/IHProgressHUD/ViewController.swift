@@ -16,17 +16,18 @@ class ViewController : UIViewController {
     @IBOutlet weak var popActivityButton: UIButton!
     
     private var progress: CGFloat = 0.0
-    
+    /*
     private var activityCount = 0 {
         didSet {
             popActivityButton.setTitle("popActivity - \(activityCount)", for: .normal)
         }
     }
+    */
     
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityCount = 0
+     //   activityCount = 0
 //        IHProgressHUD.setHUD(backgroundColor: UIColor.blue)
         addObserver(self, forKeyPath: "activityCount", options: .new, context: nil)
     }
@@ -34,7 +35,9 @@ class ViewController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handle(_:)), name: NotificationName.IHProgressHUDWillAppear.getNotificationName(), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handle(_:)), name: NotificationName.IHProgressHUDWillAppear.getNotificationName(), object: nil)
+       
+         NotificationCenter.default.addObserver(self, selector: #selector(self.handle(_:)), name: NotificationName.IHProgressHUDCancelEvent.getNotificationName(), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handle(_:)), name: NotificationName.IHProgressHUDDidAppear.getNotificationName(), object: nil)
         
@@ -45,21 +48,25 @@ class ViewController : UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handle(_:)), name: NotificationName.IHProgressHUDDidReceiveTouchEvent.getNotificationName(), object: nil)
         
         addObserver(self as NSObject, forKeyPath: "activityCount", options: .new, context: nil)
+
+        
     }
     
     @IBAction func show(_ sender: UIButton) {
         DispatchQueue.global(qos: .utility).async {
             IHProgressHUD.show()
         }
-        self.activityCount += 1
+       // self.activityCount += 1
     }
     
     @IBAction func showWithStatus(_ sender: UIButton) {
-        activityCount += 1
+       // activityCount += 1
         IHProgressHUD.show(withStatus: "Show with Status")
-        activityCount += 1
+        
+      //  activityCount += 1
     }
     
+/*
     @IBAction func showWithProgress(_ sender: UIButton) {
         activityCount += 1
         progress = 0.0
@@ -72,7 +79,6 @@ class ViewController : UIViewController {
             IHProgressHUD.showInfowithStatus("Useful Information.")
         }
     }
-    
     
     @IBAction func showSuccessWithStatus(_ sender: Any) {
         IHProgressHUD.showSuccesswithStatus("Status Sucess")
@@ -130,7 +136,8 @@ class ViewController : UIViewController {
             IHProgressHUD.set(defaultMaskType: .gradient)
         }
     }
-    
+    */
+
     // MARK: - Notification handling
     @objc func handle(_ notification: Notification?) {
         if let aName = notification?.name {
@@ -139,14 +146,14 @@ class ViewController : UIViewController {
         if let aKey = notification?.userInfo?[NotificationName.IHProgressHUDStatusUserInfoKey.getNotificationName()] {
             print("Status user info key: \(aKey)")
         }
-        if notification?.name.rawValue == "IHProgressHUDDidReceiveTouchEvent" {
+        if notification?.name.rawValue == "IHProgressHUDCancelEvent" {
             closeProgress()
         }
         if ((notification?.name)!.rawValue == "IHProgressHUDDidReceiveTouchEvent") {
             closeProgress()
         }
     }
-    
+    /*
     @objc func increaseProgress() {
         progress += 0.1
         IHProgressHUD.show(progress: progress, status: "Here is a very large text. Hello world. It is the introduction of Programming")
@@ -160,9 +167,9 @@ class ViewController : UIViewController {
             }
         }
     }
-    
+    */
     @objc func closeProgress() {
         IHProgressHUD.dismiss()
-        activityCount = 0
+      //  activityCount = 0
     }
 }

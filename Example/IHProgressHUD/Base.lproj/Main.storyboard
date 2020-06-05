@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,9 +29,6 @@
                                 <rect key="frame" x="16" y="94.5" width="343" height="33"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="show"/>
-                                <connections>
-                                    <action selector="show:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O4U-b5-PHR"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajX-aT-XVa">
                                 <rect key="frame" x="16" y="139" width="343" height="33"/>
@@ -51,9 +46,6 @@
                                 <state key="normal" title="showSuccessWithStatus:">
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="showSuccessWithStatus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mcN-Db-uZP"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bX-FJ-Xml">
                                 <rect key="frame" x="16" y="228" width="343" height="33"/>
@@ -61,9 +53,6 @@
                                 <state key="normal" title="showInfoWithStatus:">
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="showInfoWithStatus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pid-5L-SHb"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWC-hg-lSh">
                                 <rect key="frame" x="16" y="317" width="343" height="33"/>
@@ -71,9 +60,6 @@
                                 <state key="normal" title="showErrorWithStatus:">
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="showErrorWithStatus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dVy-we-nkg"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XgO-m1-d5S">
                                 <rect key="frame" x="16" y="183.5" width="343" height="33"/>
@@ -81,12 +67,9 @@
                                 <state key="normal" title="showWithProgress:">
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="showWithProgress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y43-bc-XBP"/>
-                                </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hhM-GA-UeK">
-                                <rect key="frame" x="16" y="497.5" width="91" height="29"/>
+                                <rect key="frame" x="16" y="496" width="101" height="32"/>
                                 <segments>
                                     <segment title="Light"/>
                                     <segment title="Dark"/>
@@ -96,7 +79,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iAW-K3-Ahn">
-                                <rect key="frame" x="252" y="497.5" width="107" height="29"/>
+                                <rect key="frame" x="242" y="496" width="117" height="32"/>
                                 <segments>
                                     <segment title="Flat"/>
                                     <segment title="Native"/>
@@ -124,7 +107,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="a46-EJ-vvy">
-                                <rect key="frame" x="16" y="586.5" width="343" height="29"/>
+                                <rect key="frame" x="16" y="585" width="343" height="32"/>
                                 <segments>
                                     <segment title="None"/>
                                     <segment title="Clear"/>
@@ -142,9 +125,6 @@
                                 <state key="normal" title="popActivity - 0">
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="popActivity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SbT-hz-xTC"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2U6-gA-atj">
                                 <rect key="frame" x="16" y="361.5" width="343" height="33"/>
@@ -152,9 +132,6 @@
                                 <state key="normal" title="dismiss">
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="DISMISS:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oBW-Be-bSM"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -202,9 +179,6 @@
                             <constraint firstItem="a46-EJ-vvy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zqM-IZ-LrD"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="popActivityButton" destination="7ND-R8-KBh" id="4vA-eG-HSw"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -1,16 +1,16 @@
 {
   "name": "IHProgressHUD",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "summary": "A clean and lightweight progress HUD for iOS and tvOS app based on SVProgressHUD, written in Swift.",
   "license": "MIT",
-  "homepage": "https://github.com/Ibrahimhass/IHProgressHUD",
-  "swift_version": "4.2",
+  "homepage": "https://github.com/Swiftify-Corp/IHProgressHUD/",
+  "swift_versions": "5.0",
   "authors": {
     "mdibrahimhassan@gmail.com": "mdibrahimhassan@gmail.com"
   },
   "source": {
-    "git": "https://github.com/Ibrahimhass/IHProgressHUD.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/Swiftify-Corp/IHProgressHUD.git",
+    "tag": "0.1.5"
   },
   "social_media_url": "https://twitter.com/IbrahimH_ss_n",
   "platforms": {
@@ -18,6 +18,8 @@
     "tvos": "9.0"
   },
   "frameworks": "QuartzCore",
-  "source_files": "IHProgressHUD/Classes/**/*",
-  "requires_arc": true
+  "source_files": "IHProgressHUD/Classes/**/*.swift",
+  "resources": "IHProgressHUD/Classes/IHProgressHUD.bundle",
+  "requires_arc": true,
+  "swift_version": "5.0"
 }
