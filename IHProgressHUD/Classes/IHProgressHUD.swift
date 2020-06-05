@@ -12,7 +12,7 @@
 import UIKit
 
 public enum NotificationName : String {
-    case IHProgressHUDDidReceiveTouchEvent, IHProgressHUDDidTouchDownInside, IHProgressHUDWillDisappear, IHProgressHUDDidDisappear, IHProgressHUDWillAppear, IHProgressHUDDidAppear, IHProgressHUDStatusUserInfoKey,IHProgressHUDCancelEvent
+    case IHProgressHUDDidReceiveTouchEvent, IHProgressHUDCancelEvent,IHProgressHUDDidTouchDownInside, IHProgressHUDWillDisappear, IHProgressHUDDidDisappear, IHProgressHUDWillAppear, IHProgressHUDDidAppear, IHProgressHUDStatusUserInfoKey
     public func getNotificationName() -> Notification.Name {
         return Notification.Name.init(self.rawValue)
     }
