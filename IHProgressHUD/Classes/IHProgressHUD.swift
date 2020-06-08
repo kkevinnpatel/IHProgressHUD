@@ -266,15 +266,10 @@ public class IHProgressHUD : UIView {
         if tag == 101 {
             print("tap")
             
-            NotificationCenter.default.post(name: NotificationName.IHProgressHUDWillAppear.getNotificationName(), object: self, userInfo: notificationUserInfo())
-
             NotificationCenter.default.post(name: Notification.Name("CancelEvent"), object: self, userInfo: notificationUserInfo())
 
-            
-            //NotificationCenter.default.post(name: NotificationName.IHProgressHUDCancelEvent.getNotificationName(), object: self, userInfo: notificationUserInfo())
         }
     }
-
 
     @objc private func controlViewDidReceiveTouchEvent(_ sender: Any?, for event: UIEvent?) {
         NotificationCenter.default.post(name: NotificationName.IHProgressHUDDidReceiveTouchEvent.getNotificationName(), object: self, userInfo: notificationUserInfo())
@@ -836,7 +831,9 @@ public class IHProgressHUD : UIView {
     }
     
     private func getStatusLabel() -> UILabel {
+        
         if statusLabel == nil {
+            
             statusLabel = UILabel.init(frame: .zero)
             statusLabel?.backgroundColor = .clear
             statusLabel?.adjustsFontSizeToFitWidth = true
@@ -844,15 +841,22 @@ public class IHProgressHUD : UIView {
             statusLabel?.baselineAdjustment = .alignCenters
             statusLabel?.numberOfLines = 0
         }
+        
         if statusLabel?.superview == nil && statusLabel != nil {
             getHudView().contentView.addSubview(statusLabel!)
         }
+        
         statusLabel?.textColor = foreGroundColorForStyle()
         statusLabel?.font = font
         statusLabel?.alpha = 1.0
         statusLabel?.isHidden = false
         
         statusLabel?.isUserInteractionEnabled = true
+        
+        
+        self.tag = 101
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tap(_:))))
+
         statusLabel?.tag = 101
         statusLabel?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tap(_:))))
 
