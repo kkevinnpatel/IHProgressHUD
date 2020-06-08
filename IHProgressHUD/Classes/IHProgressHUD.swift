@@ -107,7 +107,7 @@ public class IHProgressHUD : UIView {
         infoImage = loadImageBundle(named: "info")!
         successImage = loadImageBundle(named: "success")!
         errorImage = loadImageBundle(named: "error")
-        //isUserInteractionEnabled = false
+        isUserInteractionEnabled = true
         activityCount = 0
         getBackGroundView().alpha = 0.0
         getImageView().alpha = 0.0
@@ -266,8 +266,9 @@ public class IHProgressHUD : UIView {
         if tag == 101 {
             print("tap")
             
-            NotificationCenter.default.post(name: Notification.Name("CancelEvent"), object: self, userInfo: notificationUserInfo())
+            //NotificationCenter.default.post(name: Notification.Name("CancelEvent"), object: self, userInfo: notificationUserInfo())
 
+            NotificationCenter.default.post(name: NotificationName.IHProgressHUDCancelEvent.getNotificationName(), object: self, userInfo: notificationUserInfo())
         }
     }
 
@@ -294,8 +295,11 @@ public class IHProgressHUD : UIView {
     @objc private func fadeIn(_ object: AnyObject?) {
         updateHUDFrame()
         positionHUD()
+        
+        getControlView().isUserInteractionEnabled = true
+
         if (defaultMaskType != .none) {
-            getControlView().isUserInteractionEnabled = true
+            //getControlView().isUserInteractionEnabled = true
             accessibilityLabel = getStatusLabel().text ?? "Loading"
             isAccessibilityElement = true
             getControlView().accessibilityViewIsModal = true
@@ -851,8 +855,7 @@ public class IHProgressHUD : UIView {
         statusLabel?.alpha = 1.0
         statusLabel?.isHidden = false
         
-        statusLabel?.isUserInteractionEnabled = true
-        
+        statusLabel?.isUserInteractionEnabled = false
         
         self.tag = 101
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tap(_:))))
